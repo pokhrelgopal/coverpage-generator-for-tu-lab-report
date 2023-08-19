@@ -1,72 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Report Coverpage Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.56/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.56/vfs_fonts.js"></script>
     <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <h1> Lab Report Coverpage Generator for TU
-
-    </h1>
-    <section>
-        <form id="reportForm">
-            <div class="form-control">
-                <label>College Name</label>
-                <input type="text" id="collegeName" placeholder="Eg .Ratna RajyaLaxmi Campus">
-            </div>
-            <div class="form-control">
-                <label>College Address</label>
-                <input type="text" id="collegeAddress" placeholder="Eg .Pradarsani Marg, Kathmandu, Nepal">
-            </div>
-            <div class="form-control">
-                <label>Faculty Name</label>
-                <input type="text" id="facultyName" placeholder="Eg .Humanities and Social Sciences">
-            </div>
-            <div class="form-control">
-                <label>Subject Name</label>
-                <input type="text" id="subjectName" placeholder="Eg .Operating System">
-            </div>
-            <div class="form-control">
-                <label>Submitted By</label>
-                <input type="text" id="submittedByName" placeholder="Eg .Gopal Pokhrel">
-            </div>
-            <div class="form-control">
-                <label>Roll Number</label>
-                <input type="text" id="rollNumber" placeholder="Eg .20">
-            </div>
-            <div class="form-control">
-                <label>Department Name</label>
-                <input type="text" id="departmentName" placeholder="Eg .Bachelor in Computer Application">
-            </div>
-            <div class="form-control">
-                <label>Semester</label>
-                <input type="text" id="semester" placeholder="Eg .Fourth or 4th">
-            </div>
-            <div class="form-control">
-                <label>Date</label>
-                <input type="text" id="date" placeholder="Eg .2078/01/01">
-            </div>
-            <div class="form-control">
-                <label>Submitted To</label>
-                <input type="text" id="submittedToName" placeholder="Eg .Ananda KC">
-            </div>
-            <button type="button" onclick="downloadPdf()">Download Coverpage PDF</button>
-        </form>
-    </section>
-    <small>
-        <p>
-            &copy; <span id="today"></span>
-            <a href="https://www.linkedin.com/in/pokhrelgopal/" target="_blank">Gopal Pokhrel</a>
-        </p>
-    </small>
-
-
     <script type="text/javascript">
         const today = new Date();
-        document.getElementById('today').innerHTML = today.getFullYear();
         function toDataURL(url, callback) {
             var xhr = new XMLHttpRequest();
             xhr.onload = function () {
@@ -207,6 +151,80 @@
             });
         }
     </script>
+</head>
+
+<body class="bg-gray-100">
+    <div class="flex justify-center items-center">
+        <div class="bg-white p-8 shadow-lg rounded-md w-full m-5 md:w-1/2 lg:w-1/3">
+            <h1 class="text-2xl font-bold mb-4 text-center">
+                Lab Report Coverpage Generator for Tribhuwan University
+            </h1>
+            <section>
+                <form id="reportForm">
+                    <div class="mb-4">
+                        <label class="block font-semibold mb-1">College Name</label>
+                        <input type="text" id="collegeName" placeholder="Eg. Ratna RajyaLaxmi Campus"
+                            class="w-full px-3 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block font-semibold mb-1">College Address</label>
+                        <input type="text" id="collegeAddress" placeholder="Eg. Pradarsani Marg, Kathmandu, Nepal"
+                            class="w-full px-3 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block font-semibold mb-1">Faculty Name</label>
+                        <input type="text" id="facultyName" placeholder="Eg. Humanities and Social Sciences"
+                            class="w-full px-3 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block font-semibold mb-1">Subject Name</label>
+                        <input type="text" id="subjectName" placeholder="Eg. Operating System"
+                            class="w-full px-3 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block font-semibold mb-1">Submitted By</label>
+                        <input type="text" id="submittedByName" placeholder="Eg. Gopal Pokhrel"
+                            class="w-full px-3 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block font-semibold mb-1">Roll Number</label>
+                        <input type="text" id="rollNumber" placeholder="Eg. 20" class="w-full px-3 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block font-semibold mb-1">Department Name</label>
+                        <input type="text" id="departmentName" placeholder="Eg. Bachelor in Computer Application"
+                            class="w-full px-3 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block font-semibold mb-1">Semester</label>
+                        <input type="text" id="semester" placeholder="Eg. Fourth or 4th"
+                            class="w-full px-3 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block font-semibold mb-1">Date</label>
+                        <input type="text" id="date" placeholder="Eg. 2078/01/01"
+                            class="w-full px-3 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block font-semibold mb-1">Submitted To</label>
+                        <input type="text" id="submittedToName" placeholder="Eg. Ananda KC"
+                            class="w-full px-3 py-2 border rounded">
+                    </div>
+                    <div class="mb-4">
+                        <button type="button" onclick="downloadPdf()"
+                            class="bg-blue-500 text-white px-4 py-2 rounded-md">Download Coverpage PDF</button>
+                    </div>
+                </form>
+            </section>
+            <small>
+                <p class="text-center">
+                    &copy; <span id="today"></span>
+                    <a href="https://www.linkedin.com/in/pokhrelgopal/" target="_blank" class="text-blue-500">Gopal
+                        Pokhrel</a>
+                </p>
+            </small>
+        </div>
+    </div>
 </body>
 
 </html>
