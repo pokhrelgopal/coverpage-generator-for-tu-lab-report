@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.56/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.56/vfs_fonts.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript">
         const today = new Date();
@@ -39,6 +41,7 @@
                     const semester = document.getElementById('semester').value;
                     const date = document.getElementById('date').value;
                     const submittedToName = document.getElementById('submittedToName').value;
+
                     var docDefinition = {
                         pageSize: 'A4',
                         pageMargins: [40, 40, 40, 40],
@@ -63,7 +66,7 @@
                                 text: collegeName,
                                 alignment: "center",
                                 fontSize: 20,
-                                margin: [0, 0, 0, 10]
+                                margin: [0, 0, 0, 10],
                             },
                             {
                                 text: collegeAddress,
