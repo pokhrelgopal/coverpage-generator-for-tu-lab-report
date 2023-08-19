@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.56/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.56/vfs_fonts.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1> Lab Report Coverpage Generator for TU
+
+    </h1>
+    <section>
+        <form id="reportForm">
+            <div class="form-control">
+                <label>College Name</label>
+                <input type="text" id="collegeName" placeholder="Eg .Ratna RajyaLaxmi Campus">
+            </div>
+            <div class="form-control">
+                <label>College Address</label>
+                <input type="text" id="collegeAddress" placeholder="Eg .Pradarsani Marg, Kathmandu, Nepal">
+            </div>
+            <div class="form-control">
+                <label>Faculty Name</label>
+                <input type="text" id="facultyName" placeholder="Eg .Humanities and Social Sciences">
+            </div>
+            <div class="form-control">
+                <label>Subject Name</label>
+                <input type="text" id="subjectName" placeholder="Eg .Operating System">
+            </div>
+            <div class="form-control">
+                <label>Submitted By</label>
+                <input type="text" id="submittedByName" placeholder="Eg .Gopal Pokhrel">
+            </div>
+            <div class="form-control">
+                <label>Roll Number</label>
+                <input type="text" id="rollNumber" placeholder="Eg .20">
+            </div>
+            <div class="form-control">
+                <label>Department Name</label>
+                <input type="text" id="departmentName" placeholder="Eg .Bachelor in Computer Application">
+            </div>
+            <div class="form-control">
+                <label>Semester</label>
+                <input type="text" id="semester" placeholder="Eg .Fourth or 4th">
+            </div>
+            <div class="form-control">
+                <label>Date</label>
+                <input type="text" id="date" placeholder="Eg .2078/01/01">
+            </div>
+            <div class="form-control">
+                <label>Submitted To</label>
+                <input type="text" id="submittedToName" placeholder="Eg .Ananda KC">
+            </div>
+            <button type="button" onclick="downloadPdf()">Download Coverpage PDF</button>
+        </form>
+    </section>
+    <small>
+        <p>
+            &copy; <span id="today"></span>
+            <a href="https://www.linkedin.com/in/pokhrelgopal/" target="_blank">Gopal Pokhrel</a>
+        </p>
+    </small>
+
+
+    <script type="text/javascript">
+        const today = new Date();
+        document.getElementById('today').innerHTML = today.getFullYear();
+        function toDataURL(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    callback(reader.result);
+                };
+                reader.readAsDataURL(xhr.response);
+            };
+            xhr.open('GET', url);
+            xhr.responseType = 'blob';
+            xhr.send();
+        }
+
+        function downloadPdf() {
+
+            toDataURL('tu-logo.png', function (dataUrl) {
+                toDataURL('lines.png', function (linesDataUrl) {
+                    const collegeName = document.getElementById('collegeName').value;
+                    const collegeAddress = document.getElementById('collegeAddress').value;
+                    const facultyName = document.getElementById('facultyName').value;
+                    const subjectName = document.getElementById('subjectName').value;
+                    const submittedByName = document.getElementById('submittedByName').value;
+                    const rollNumber = document.getElementById('rollNumber').value;
+                    const departmentName = document.getElementById('departmentName').value;
+                    const semester = document.getElementById('semester').value;
+                    const date = document.getElementById('date').value;
+                    const submittedToName = document.getElementById('submittedToName').value;
+                    var docDefinition = {
+                        pageSize: 'A4',
+                        pageMargins: [40, 40, 40, 40],
+                        background: function (currentPage, pageSize) {
+                            var margin = 20;
+                            return {
+                                canvas: [
+                                    {
+                                        type: 'rect',
+                                        x: margin,
+                                        y: margin,
+                                        w: pageSize.width - margin * 2,
+                                        h: pageSize.height - margin * 2,
+                                        lineWidth: 3,
+                                        lineColor: '#000'
+                                    }
+                                ]
+                            };
+                        },
+                        content: [
+                            {
+                                text: collegeName,
+                                alignment: "center",
+                                fontSize: 20,
+                                margin: [0, 0, 0, 10]
+                            },
+                            {
+                                text: collegeAddress,
+                                alignment: "center",
+                                fontSize: 10,
+                                italics: true,
+                                margin: [0, 0, 0, 8]
+                            },
+                            {
+                                text: "Tribhuwan University",
+                                alignment: "center",
+                                fontSize: 15,
+                                margin: [0, 0, 0, 10]
+                            },
+                            {
+                                text: `Faculty of ${facultyName}`,
+                                alignment: "center",
+                                fontSize: 15,
+                                margin: [0, 0, 0, 10]
+                            },
+                            {
+                                text: `Lab report of ${subjectName}`,
+                                alignment: "center",
+                                fontSize: 15,
+                                margin: [0, 0, 0, 10]
+                            },
+                            {
+                                image: dataUrl,
+                                width: 120,
+                                height: 150,
+                                alignment: "center",
+                                margin: [0, 10, 0, 0]
+                            },
+                            {
+                                image: linesDataUrl,
+                                width: 80,
+                                height: 160,
+                                alignment: "center",
+                                margin: [0, 30]
+                            },
+                            {
+                                columns: [
+                                    {
+                                        stack: [
+                                            {
+                                                text: "Submitted by:",
+                                                alignment: "left",
+                                                decoration: "underline",
+                                                fontSize: 15,
+                                                margin: [0, 30, 0, 10]
+                                            },
+                                            `Name: ${submittedByName} \n\n`,
+                                            `Roll Number: ${rollNumber} \n\n`,
+                                            `Department: ${departmentName} \n\n`,
+                                            `Semester: ${semester} \n\n`,
+                                            `Date: ${date} \n\n`,
+                                        ],
+                                        alignment: "left"
+                                    },
+                                    {
+                                        stack: [
+                                            {
+                                                text: "Submitted To:",
+                                                alignment: "right",
+                                                decoration: "underline",
+                                                fontSize: 15,
+                                                margin: [0, 30, 0, 10]
+                                            },
+                                            `${submittedToName} \n\n`,
+                                            `Department of ${departmentName} \n\n`,
+                                            `${collegeName} \n\n`,
+                                            "Signature: ___________"
+                                        ],
+                                        alignment: "right"
+                                    },
+
+                                ]
+                            }
+                        ],
+                        defaultStyle: {
+                        }
+                    };
+                    pdfMake.createPdf(docDefinition).print();
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

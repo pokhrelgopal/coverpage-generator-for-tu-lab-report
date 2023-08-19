@@ -1,0 +1,48 @@
+@import url(https://fonts.bunny.net/css?family=poppins:300,400,500,600,700,800);
+
+
+body {
+    background-color: #eee;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ;
+}
+
+form {
+    width: 400px;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    background: #000;
+    color: #fff;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+input {
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #000;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
